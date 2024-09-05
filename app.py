@@ -7,7 +7,7 @@ counter = 0
 @app.route('/count')
 def count():
     global counter
-    counter += 1
+    counter += 10
     return str(counter)
 
 
