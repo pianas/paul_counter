@@ -4,18 +4,18 @@ phases:
     pre_build:
         commands:
             - echo Logging into ECR
-            - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 022499048865.dkr.ecr.eu-central-1.amazonaws.com
+            - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 816470285182.dkr.ecr.eu-west-1.amazonaws.com
     build:
         commands:
             - echo Building Docker Image...
-            - docker build -t paul-counter-new .
-            - docker tag paul-counter-new:latest 022499048865.dkr.ecr.eu-central-1.amazonaws.com/paul-counter-new:latest
+            - docker build -t paul_counter .
+            - docker tag paul_counter:latest 816470285182.dkr.ecr.eu-west-1.amazonaws.com/paul_counter:latest
     post_build:
         commands:
             - echo Pushing Docker image to ECR...
-            - docker push 022499048865.dkr.ecr.eu-central-1.amazonaws.com/paul-counter-new:latest
+            - docker push 816470285182.dkr.ecr.eu-west-1.amazonaws.com/paul_counter:latest
             - echo Creating imagedefinitions.json
-            - printf '[{"name": "counter", "imageUri": "%s"}]' 022499048865.dkr.ecr.eu-central-1.amazonaws.com/paul-counter-new:latest > imagedefinitions.json
+            - printf '[{"name": "counter", "imageUri": "%s"}]' 816470285182.dkr.ecr.eu-west-1.amazonaws.com/paul_counter:latest > imagedefinitions.json
 
 artifacts:
     files:
