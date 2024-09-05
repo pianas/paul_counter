@@ -14,7 +14,6 @@ phases:
         commands:
             - echo Pushing Docker image to ECR...
             - docker push 816470285182.dkr.ecr.eu-west-1.amazonaws.com/paul_counter:latest
-            - echo Creating imagedefinitions.json
             - printf '[{"name": "counter", "imageUri": "816470285182.dkr.ecr.eu-west-1.amazonaws.com/paul_counter:latest"}]' > imagedefinitions.json
 
 artifacts:
